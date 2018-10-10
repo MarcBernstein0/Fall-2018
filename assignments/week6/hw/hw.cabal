@@ -10,22 +10,24 @@ cabal-version:        >=1.10
 
 
 library
-  exposed-modules:    WarmUp, IndexTree, IndexTreeBad, HigherOrderProblems, AnnoyingLists, IndexAndConcordance, TypeclassProblems
+  exposed-modules:    LambdaCalcImplementation, UsingLambdaCalc, InfiniteLists
   ghc-options:        -fwarn-incomplete-patterns -fwarn-incomplete-uni-patterns
-  build-depends:      base >= 4.7 && < 5
+  build-depends:      containers, base >= 4.7 && < 5
   hs-source-dirs:     src
   default-language:   Haskell2010
 
+-- --quickcheck-tests 1000
 test-suite test
   default-language:
     Haskell2010
   type:
     exitcode-stdio-1.0
+-- TODO: detailed-1.0 is preferred
   hs-source-dirs:
     tests
   main-is: Main.hs
-  other-modules: HigherOrderProblemsTest, IndexTreeBadTest, IndexTreeTest, WarmUpTest, IndexAndConcordanceTest, TypeclassProblemsTest
+  other-modules: UsingLambdaCalcTest, InfiniteListsTest
   build-depends:
       base >= 4.7 && < 5
-    , tasty >= 0.7, tasty-hunit
+    , tasty >= 0.11.1, tasty-hunit, tasty-quickcheck
     , hw
